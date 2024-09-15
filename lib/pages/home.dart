@@ -14,36 +14,33 @@ class _HomeTabState extends State<HomeTab> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Container: Welcome text with image
           // Welcome back, / Good morning'afternoon'evening
           // caring friend
+          const Text(
+            "Welcome, caring friend",
+            style: TextStyle(
+              fontSize: 30.0,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          // Add Banner Asset Image
           Container(
             height: 250,
             width: double.infinity,
-            color: Colors.grey,
-            decoration: BoxDecoration(
-//  to add image here
-            ),
-            child: Column(
+            child: ListView(
+              scrollDirection: Axis.horizontal,
               children: [
-                Text(
-                  "Welcome, caring friend",
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                // Add Banner Asset Image
-
-
+                candidateBox("img234", "mykpc/post123"),
+                candidateBox("img234", "mykpc/post123"),
+                candidateBox("img234", "mykpc/post123"),
               ],
             ),
           ),
 
-          SizedBox(
-            height: 10.0,
-          ),
+          SizedBox(height: 10.0),
 
           // Announcements sliders,
           Row(
@@ -66,9 +63,7 @@ class _HomeTabState extends State<HomeTab> {
             ],
           ),
 
-          SizedBox(
-            height: 10.0,
-          ),
+          SizedBox(height: 10.0),
 
           // Upcoming Programs
           Row(
@@ -100,7 +95,44 @@ class _HomeTabState extends State<HomeTab> {
         ],
       ),
     );
-  }
+  } // idget build method ends
+
+  // featured box
+
+  Widget candidateBox(String imageUrl, String postUrl) {
+    return GestureDetector(
+      onTap: () {},
+
+      // Widget
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Container(
+          height: 240,
+          width: 300,
+          decoration: BoxDecoration(
+              border: Border.all(
+                width: 2,
+                color: Colors.redAccent,
+              ),
+              borderRadius: BorderRadius.circular(4)),
+          child: Column(
+            children: [
+              // image
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Image.asset(
+                  "assets/images/kpc-23-acc.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  } // featured box ends
+
+  // widget build state class
 }
 
 // Announcement Box
@@ -109,6 +141,5 @@ Widget AnnoucementBox() {
     width: 100,
     height: 50,
     color: Colors.blue,
-
   );
 }
