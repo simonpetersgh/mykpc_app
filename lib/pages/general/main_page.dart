@@ -16,18 +16,18 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // my Menu Drawer
-      drawer: Drawer(),
+      drawer: const Drawer(),
 
       // my app bar
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 252, 36, 36),
+        backgroundColor: const Color.fromARGB(255, 252, 36, 36),
         foregroundColor: Colors.white,
-        title: Text("MyKPC App"),
+        title: const Text("MyKPC App"),
         actions: [
           GestureDetector(
             onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
               child: CircleAvatar(
                 child: Text("S"),
               ),
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
       ),
 
       // main body
-      body: HomeTab(),
+      body: const HomeTab(),
 
       // google Nav bar
       // bottomNavigationBar: GNav(
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
 
           // default bottom nav bar
           bottomNavigationBar: BottomNavigationBar(
-            items: [
+            items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home), label: "Home", 
               ),

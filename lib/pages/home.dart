@@ -27,7 +27,7 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
           // Add Banner Asset Image
-          Container(
+          SizedBox(
             height: 250,
             width: double.infinity,
             child: ListView(
@@ -40,13 +40,13 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
 
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
 
           // Announcements sliders,
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   "Announcements",
                   style: TextStyle(
@@ -55,21 +55,21 @@ class _HomeTabState extends State<HomeTab> {
                   ),
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: Text(""),
               ),
               IconButton(
-                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios_rounded))
+                  onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios_rounded))
             ],
           ),
 
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
 
           // Upcoming Programs
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   "Upcoming Programs",
                   style: TextStyle(
@@ -78,17 +78,17 @@ class _HomeTabState extends State<HomeTab> {
                   ),
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: Text(""),
               ),
               IconButton(
-                  onPressed: () {}, icon: Icon(Icons.arrow_forward_ios_rounded))
+                  onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios_rounded))
             ],
           ),
 
           Container(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
+            padding: const EdgeInsets.all(8.0),
+            child: const Column(
               children: [],
             ),
           ),
@@ -112,14 +112,14 @@ class _HomeTabState extends State<HomeTab> {
           decoration: BoxDecoration(
               border: Border.all(
                 width: 2,
-                color: Colors.redAccent,
+                color: const Color.fromARGB(255, 0, 121, 21),
               ),
               borderRadius: BorderRadius.circular(4)),
           child: Column(
             children: [
               // image
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(2.0),
                 child: Image.asset(
                   "assets/images/kpc-23-acc.jpg",
                   fit: BoxFit.cover,

@@ -10,7 +10,7 @@ class CommChatTab extends StatefulWidget {
 }
 
 class _CommChatTabState extends State<CommChatTab> {
-  List<types.Message> _messages = [];
+  final List<types.Message> _messages = [];
   final _user = const types.User(
     id: '82091008-a484-4a89-ae75-a22bf8d6f3ac',
   );
@@ -20,7 +20,7 @@ class _CommChatTabState extends State<CommChatTab> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Community Chat"),
+        title: const Text("Community Chat"),
       ),
       body: Chat(messages: _messages, onSendPressed: _handleSendPressed, user: _user));
   }

@@ -40,7 +40,7 @@ class _VotingPortalState extends State<VotingPortal> {
 
               const Text("PRESIDENT CATEGORY"),
 
-              Container(
+              SizedBox(
                 height: 310,
                 width: double.infinity,
                 child: ListView(

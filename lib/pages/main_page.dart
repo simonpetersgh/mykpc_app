@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:mykpc_app/keystates.dart';
 import 'package:mykpc_app/pages/home.dart';
+import 'package:mykpc_app/pages/menu/menu.dart';
 
 // import './comm_chat.dart';
 
@@ -13,22 +15,32 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    // Implementing initState
+    notificationsOn;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       // my Menu Drawer
-      drawer: const Drawer(),
+      drawer: const Drawer(
+        child: MyMenu(),
+      ),
 
       // my app bar
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 252, 36, 36),
-        foregroundColor: Colors.white,
-        title: const Text("MyKPC App"),
         actions: [
           GestureDetector(
-            onTap: () {},
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.person)
+            onTap: () {
+              Navigator.pushNamed(context, '/notifications');
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: notificationsOn
+                  ? const Icon(Icons.notifications_active_outlined)
+                  : const Icon(Icons.notifications_off_outlined),
             ),
           )
         ],
