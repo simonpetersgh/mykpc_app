@@ -32,11 +32,17 @@ class _MyMenuState extends State<MyMenu> {
             accountName: const Text("Caring friend"),
             accountEmail: const Text("example@.email.com"),
             otherAccountsPictures: [
+              // edit profile
+              GestureDetector(
+                  onTap: () {},
+                  child: const Icon(Icons.edit_outlined, color: Colors.white)),
+
+              // settings
               IconButton(
                 onPressed: () {},
-                hoverColor: Colors.white,
-                icon: const Icon(Icons.settings),
-              )
+                hoverColor: Colors.grey,
+                icon: const Icon(Icons.settings, color: Colors.white),
+              ),
             ],
           ),
 
@@ -62,8 +68,8 @@ class _MyMenuState extends State<MyMenu> {
           // REMOVED FOR NOW
 
           ListTile(
-            leading: const Icon(Icons.announcement_outlined),
-            title: const Text('Announcements'),
+            leading: const Icon(Icons.podcasts_outlined),
+            title: const Text('Podcasts'),
             onTap: () {},
           ),
 
@@ -114,18 +120,39 @@ class _MyMenuState extends State<MyMenu> {
           // divider widget to separate each menu item
 
           // settings menu item
-          ListTile(
-            leading: const Icon(Icons.question_mark_outlined),
-            title: const Text('Help and Support'),
-            onTap: () {},
-          ),
+          // ListTile(
+          //   leading: const Icon(Icons.question_mark_outlined),
+          //   title: const Text('Help and Support'),
+          //   onTap: () {},
+          // ),
+
+          // const Spacer(), was causin rendering issue
 
           const Divider(),
 
           // logout button with text "Sign Out"
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Log out'),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: ElevatedButton(
+              onPressed: () {},
+              // iconbutton style for a background color
+              style: const ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll<Color>(
+                    Color.fromARGB(255, 165, 13, 2)),
+                foregroundColor: WidgetStatePropertyAll<Color>(Colors.white),
+              ),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.logout),
+                  SizedBox(width: 10),
+                  Text(
+                    'Log out',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),

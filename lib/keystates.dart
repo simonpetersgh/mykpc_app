@@ -9,3 +9,5 @@ class User {
   late String phone;
   User(username, name, studentid, phone);
 }
+
+int navTabIndex = 0;

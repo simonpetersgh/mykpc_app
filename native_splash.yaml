@@ -1,0 +1,3 @@
+# flutter native splash screen
+flutter_native_splash:
+  background_image: "assets/images/mykpc2.png"

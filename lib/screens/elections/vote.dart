@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mykpc_app/pages/elections/votes.dart';
+import 'package:mykpc_app/screens/elections/votes.dart';
 
 class VotingPortal extends StatefulWidget {
   const VotingPortal({super.key});
@@ -73,7 +73,7 @@ class _VotingPortalState extends State<VotingPortal> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          debugPrint("Selected candidate $candidateNumber");
+          debugPrint("Selected candidates $candidateNumber");
           if (presSelected) {
             presSelected = !presSelected;
           } else {

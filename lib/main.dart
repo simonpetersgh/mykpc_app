@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:mykpc_app/pages/comm_chat.dart';
-import 'package:mykpc_app/pages/elections/elections.dart';
-import 'package:mykpc_app/pages/elections/vote.dart';
-import 'package:mykpc_app/pages/general/podcasts.dart';
-import 'package:mykpc_app/pages/main_page.dart';
-import 'package:mykpc_app/pages/notifications.dart';
+import 'package:mykpc_app/screens/comm_chat.dart';
+import 'package:mykpc_app/screens/elections/elections.dart';
+import 'package:mykpc_app/screens/elections/vote.dart';
+import 'package:mykpc_app/screens/general/comm_chat0.dart';
+import 'package:mykpc_app/screens/podcasts.dart';
+import 'package:mykpc_app/screens/home.dart';
+import 'package:mykpc_app/screens/main_page.dart';
+import 'package:mykpc_app/screens/notifications.dart';
 
+import 'screens/activity.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +23,8 @@ class MyApp extends StatelessWidget {
         title: 'MyKPC App',
         theme: ThemeData(
           fontFamily: 'Roboto',
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color.fromARGB(255, 243, 3, 3)),
           useMaterial3: true,
         ),
         // home: const HomePage(),
@@ -28,9 +32,12 @@ class MyApp extends StatelessWidget {
         // app routes
         routes: {
           "/": (ctx) => const HomePage(),
-          "/chat": (context) => const CommChatTab(),
-          "/podcasts": (ctx) => const Podcasts(),
+          "/home": (ctx) => const HomeTab(),
+          "/commChat": (context) => const CommChat(),
+          "/activity": (ctx) => const ActivityTab(),
           "/notifications": (context) => const Notifications(),
+          "/chat0": (context) => const CommChatTab0(),
+          "/podcasts": (ctx) => const PodcastsTab(),
           '/ec-center': (context) => const ElectionsLogin(),
           '/vote': (context) => const VotingPortal(),
         });

@@ -136,6 +136,7 @@ class _HomeTabState extends State<HomeTab> {
 }
 
 // Announcement Box
+// ignore: non_constant_identifier_names
 Widget AnnoucementBox() {
   return Container(
     width: 100,

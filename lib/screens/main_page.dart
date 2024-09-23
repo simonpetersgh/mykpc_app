@@ -1,0 +1,116 @@
+// ignore_for_file: avoid_print
+
+import 'package:flutter/material.dart';
+import 'package:mykpc_app/keystates.dart';
+import 'package:mykpc_app/screens/chats.dart';
+import 'package:mykpc_app/screens/menu/menu.dart';
+import 'package:mykpc_app/screens/home.dart';
+import 'package:mykpc_app/screens/activity.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  // tab values
+  int currentTabIndex = 0;
+  // Tabs Array
+  final myTabs = [
+    const HomeTab(),
+    const ActivityTab(),
+    const ChatTab(),
+    // const PodcastsTab(),
+  ];
+
+  @override
+  void initState() {
+    // Implementing initState
+    notificationsOn;
+    currentTabIndex;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // my Menu Drawer
+      drawer: const Drawer(
+        child: MyMenu(),
+      ),
+
+      // my app bar
+      appBar: AppBar(
+        title: const Text('Caring friends'),
+        // centerTitle: true,
+        actions: [
+          // add post
+          IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+          // chat
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/chat0');
+            },
+            icon: const Icon(Icons.telegram_outlined),
+          ),
+          // notifications iButton
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/notifications');
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: notificationsOn
+                  ? const Icon(Icons.notifications_active_outlined)
+                  : const Icon(Icons.notifications_off_outlined),
+            ),
+          )
+        ],
+      ),
+
+      // main body
+      body: myTabs[currentTabIndex],
+
+      // floating action chat
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.pushNamed(context, '/chat');
+      //   },
+      //   foregroundColor: Colors.white,
+      //   backgroundColor: const Color.fromARGB(255, 70, 20, 2),
+      //   child: const Icon(Icons.telegram_outlined, size: 50.0),
+      // ),
+
+      // default navbar
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentTabIndex,
+        backgroundColor: Colors.redAccent,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.white,
+        // selectedIconTheme: IconThemeData(),
+        onTap: (newIndex) {
+          setState(() {
+            currentTabIndex = newIndex;
+            print(newIndex);
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_rounded),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.tag_rounded),
+            label: "Activity",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.telegram_outlined),
+            label: "Chat",
+          ),
+        ],
+      ),
+    );
+  }
+}

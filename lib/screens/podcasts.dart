@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Podcasts extends StatefulWidget {
-  const Podcasts({super.key});
+class PodcastsTab extends StatefulWidget {
+  const PodcastsTab({super.key});
 
   @override
-  State<Podcasts> createState() => _PodcastsState();
+  State<PodcastsTab> createState() => _PodcastsTabState();
 }
 
-class _PodcastsState extends State<Podcasts> {
+class _PodcastsTabState extends State<PodcastsTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
