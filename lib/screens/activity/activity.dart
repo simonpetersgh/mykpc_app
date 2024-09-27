@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mykpc_app/screens/activities_posts.dart';
-import 'package:mykpc_app/screens/general/activity_box.dart';
+import 'package:mykpc_app/screens/activity/activities_posts.dart';
+import 'package:mykpc_app/screens/activity/activity_box.dart';
 
 class ActivityTab extends StatefulWidget {
   const ActivityTab({super.key});
@@ -37,6 +37,7 @@ class _ActivityTabState extends State<ActivityTab> {
               posts[index].userImage,
               posts[index].postDateTime,
               posts[index].username,
+              posts[index].postLikes.toString(),
             );
           },
         ),

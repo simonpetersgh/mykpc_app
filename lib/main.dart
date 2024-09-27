@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mykpc_app/screens/comm_chat.dart';
+import 'package:mykpc_app/screens/chat/comm_chat.dart';
 import 'package:mykpc_app/screens/elections/elections.dart';
 import 'package:mykpc_app/screens/elections/vote.dart';
 import 'package:mykpc_app/screens/general/comm_chat0.dart';
@@ -8,7 +8,7 @@ import 'package:mykpc_app/screens/home.dart';
 import 'package:mykpc_app/screens/main_page.dart';
 import 'package:mykpc_app/screens/notifications.dart';
 
-import 'screens/activity.dart';
+import 'screens/activity/activity.dart';
 
 void main() {
   runApp(const MyApp());

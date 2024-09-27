@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 // ignore: non_constant_identifier_names
 Widget ActivitySummaryBox(String title, String message, String imageUrl,
-    String dateTime, String user) {
+    String dateTime, String user, likes) {
   // Widget
   return Padding(
     padding: const EdgeInsets.all(12.0),
@@ -67,8 +67,13 @@ Widget ActivitySummaryBox(String title, String message, String imageUrl,
 
           // reaction section
           Row(children: [
-            IconButton(
-                onPressed: () {}, icon: const Icon(Icons.favorite_border)),
+            Row(
+              children: [
+                IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.favorite_border)),
+                Text(likes)
+              ],
+            ),
             IconButton(
                 onPressed: () {}, icon: const Icon(Icons.comment_outlined)),
             const Spacer(),

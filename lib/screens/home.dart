@@ -42,36 +42,13 @@ class _HomeTabState extends State<HomeTab> {
 
           const SizedBox(height: 10.0),
 
-          // Announcements sliders,
-          Row(
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Announcements",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              const Expanded(
-                child: Text(""),
-              ),
-              IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios_rounded))
-            ],
-          ),
-
-          const SizedBox(height: 10.0),
-
           // Upcoming Programs
           Row(
             children: [
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "Upcoming Programs",
+                  "Podcasts For You",
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.w500,
@@ -82,20 +59,20 @@ class _HomeTabState extends State<HomeTab> {
                 child: Text(""),
               ),
               IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios_rounded))
+                  onPressed: () {},
+                  icon: const Icon(Icons.arrow_forward_ios_rounded))
             ],
           ),
 
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            child: const Column(
-              children: [],
-            ),
-          ),
+          PodcastBox(),
+          PodcastBox(),
+          PodcastBox(),
+          PodcastBox(),
+          PodcastBox(),
         ],
       ),
     );
-  } // idget build method ends
+  } // Widget build method ends
 
   // featured box
 
@@ -135,12 +112,17 @@ class _HomeTabState extends State<HomeTab> {
   // widget build state class
 }
 
-// Announcement Box
+// Podcast Box
 // ignore: non_constant_identifier_names
-Widget AnnoucementBox() {
-  return Container(
-    width: 100,
-    height: 50,
-    color: Colors.blue,
+Widget PodcastBox() {
+  return ListTile(
+    leading: Container(
+      width: 200,
+      // height: 150,
+      color: Colors.red,
+    ),
+    title: const Text("Item title"),
+    subtitle: const Text("Subtitle text... description"),
+    trailing: const Icon(Icons.play_arrow),
   );
 }

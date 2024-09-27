@@ -11,6 +11,10 @@ class _ElectionsLoginState extends State<ElectionsLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Elections Center"),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(

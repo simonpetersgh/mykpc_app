@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:mykpc_app/keystates.dart';
-import 'package:mykpc_app/screens/chats.dart';
+import 'package:mykpc_app/screens/chat/chats.dart';
 import 'package:mykpc_app/screens/menu/menu.dart';
 import 'package:mykpc_app/screens/home.dart';
-import 'package:mykpc_app/screens/activity.dart';
+import 'package:mykpc_app/screens/activity/activity.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

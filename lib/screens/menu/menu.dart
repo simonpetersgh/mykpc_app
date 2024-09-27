@@ -33,9 +33,10 @@ class _MyMenuState extends State<MyMenu> {
             accountEmail: const Text("example@.email.com"),
             otherAccountsPictures: [
               // edit profile
-              GestureDetector(
-                  onTap: () {},
-                  child: const Icon(Icons.edit_outlined, color: Colors.white)),
+              IconButton(
+                  onPressed: () {},
+                  hoverColor: Colors.grey,
+                  icon: const Icon(Icons.edit_outlined, color: Colors.white)),
 
               // settings
               IconButton(
@@ -75,8 +76,8 @@ class _MyMenuState extends State<MyMenu> {
 
           // media menu item
           ListTile(
-            leading: const Icon(Icons.library_music),
-            title: const Text('Media'),
+            leading: const Icon(Icons.photo_library_sharp),
+            title: const Text('Photo Gallery'),
             onTap: () {},
           ),
 
@@ -105,7 +106,10 @@ class _MyMenuState extends State<MyMenu> {
           ListTile(
             leading: const Icon(Icons.check_box_outlined),
             title: const Text('Election Center'),
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/ec-center');
+            },
           ),
 
           // settings menu item: MOVED TO HEADER
