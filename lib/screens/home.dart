@@ -113,6 +113,7 @@ class _HomeTabState extends State<HomeTab> {
 }
 
 // Podcast Box
+// HAVE TO DESIGN MY OWN VIEW BOX INSTEAD OF USING THE LISTTILE
 // ignore: non_constant_identifier_names
 Widget PodcastBox() {
   return ListTile(

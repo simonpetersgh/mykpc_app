@@ -11,3 +11,6 @@ class User {
 }
 
 int navTabIndex = 0;
+
+const memberAcessToken = 'KPC2024M';
+const executiveAccessToken = "KPC.EXE";
