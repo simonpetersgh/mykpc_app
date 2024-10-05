@@ -90,6 +90,9 @@ class _RegisterWithAccessTokenState extends State<RegisterWithAccessToken> {
                     hintText: "Enter token",
                     hintStyle: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
+                    suffixIcon: tokenVerified
+                        ? const Icon(Icons.check, color: Colors.green)
+                        : null,
                   ),
                 ),
               ),

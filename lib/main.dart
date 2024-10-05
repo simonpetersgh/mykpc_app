@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mykpc_app/firebase_options.dart';
-import 'package:mykpc_app/screens/auth/reg_with_access-token.dart';
+import 'screens/auth/reg_with_access-token.dart';
 import 'screens/activity/activity.dart';
 import 'screens/auth/auth_logic.dart';
 import 'screens/auth/login.dart';
@@ -31,30 +31,31 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'MyKPC App',
-        theme: ThemeData(
-          fontFamily: 'Roboto',
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color.fromARGB(255, 243, 3, 3)),
-          useMaterial3: true,
-        ),
-        // home: const AuthLogic(),
-        debugShowCheckedModeBanner: false,
-        // app routes
-        routes: {
-          "/": (ctx) => const AuthLogic(),
-          "/loginRegister": (ctx) => const LoginOrRegister(),
-          '/regTokenVerification': (context) => const RegisterWithAccessToken(),
-          "/register": (ctx) => const Register(),
-          "/login": (ctx) => const Login(),
-          "/home": (ctx) => const HomePage(),
-          "/commChat": (context) => const CommChat(),
-          "/activity": (ctx) => const ActivityTab(),
-          "/notifications": (context) => const Notifications(),
-          "/chat0": (context) => const CommChatTab0(),
-          "/podcasts": (ctx) => const PodcastsTab(),
-          '/ec-center': (context) => const ElectionsLogin(),
-          '/vote': (context) => const VotingPortal(),
-        });
+      title: 'MyKPC App',
+      theme: ThemeData(
+        fontFamily: 'Roboto',
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 243, 3, 3)),
+        useMaterial3: true,
+      ),
+      // home: const AuthLogic(),
+      debugShowCheckedModeBanner: false,
+      // app routes
+      routes: {
+        "/": (ctx) => const AuthLogic(),
+        "/loginRegister": (ctx) => const LoginOrRegister(),
+        '/regTokenVerification': (context) => const RegisterWithAccessToken(),
+        "/register": (ctx) => const Register(),
+        "/login": (ctx) => const Login(),
+        "/home": (ctx) => const HomePage(),
+        "/commChat": (context) => const CommChat(),
+        "/activity": (ctx) => const ActivityTab(),
+        "/notifications": (context) => const Notifications(),
+        "/chat0": (context) => const CommChatTab0(),
+        "/podcasts": (ctx) => const PodcastsTab(),
+        '/ec-center': (context) => const ElectionsLogin(),
+        '/vote': (context) => const VotingPortal(),
+      },
+    );
   }
 }
