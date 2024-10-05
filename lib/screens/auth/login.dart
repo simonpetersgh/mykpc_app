@@ -38,7 +38,8 @@ class _LoginState extends State<Login> {
         password: passwordController.text,
       );
       // stop loading circle signin succussful
-      Navigator.pop(context);
+      Navigator.pop(context); // to exit loading circle
+      Navigator.pop(context); // to exit login page
       Navigator.pushReplacementNamed(context, '/home');
       // IF NOT, handle the EMAIL/PASSWORD ERROR
     } on FirebaseAuthException catch (e) {

@@ -351,7 +351,8 @@ class _RegisterState extends State<Register> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context); // exit alert dialog
+                Navigator.pop(context); // exit register screen 
                 // show login screen
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const Login()));
