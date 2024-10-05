@@ -3,6 +3,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'login.dart';
+
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -33,7 +35,6 @@ class _RegisterState extends State<Register> {
         if (passwordController.text == confirmPasswordController.text) {
           passwordMatch = true;
           passwordNotMatchingMessage = "Passwords match. Create account.";
-
         } else {
           passwordMatch = false;
           passwordNotMatchingMessage = "Passwords do not match. Resolve.";
@@ -296,13 +297,42 @@ class _RegisterState extends State<Register> {
     }
   } // REGISTER USER METHOD ENDS
 
-  // Error Message
+  // // Error Message
+  // void showErrorMessageO(String errorMessage) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return AlertDialog(
+  //         title: Text(errorMessage),
+  //       );
+  //     },
+  //   );
+  // }
+
+  // ERROR MESSAGE ALERT BOX
   void showErrorMessage(String errorMessage) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(errorMessage),
+          backgroundColor: const Color.fromARGB(255, 173, 229, 247),
+          icon: const Icon(Icons.warning_amber_rounded),
+          title: const Text('ERROR ALERT!'),
+          actionsAlignment: MainAxisAlignment.center,
+          content: Text(
+              textAlign: TextAlign.center,
+              "${errorMessage.toUpperCase()}\nTry again!"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text(
+                'OK',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
         );
       },
     );
@@ -314,18 +344,24 @@ class _RegisterState extends State<Register> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Center(
-            child: Column(
-              children: [
-                const Text("Account created successfully."),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/login');
-                    },
-                    child: const Text("Log in")),
-              ],
-            ),
-          ),
+          icon: const Icon(Icons.check_circle_outlined),
+          title: const Text("REGISTRATION SUCCESSFUL!"),
+          content: const Text("Account created successfully."),
+          actionsAlignment: MainAxisAlignment.center,
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                // show login screen
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Login()));
+              },
+              child: const Text(
+                'Login',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
         );
       },
     );
