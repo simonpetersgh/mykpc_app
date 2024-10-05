@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mykpc_app/keystates.dart';
+import 'package:mykpc_app/constants.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});

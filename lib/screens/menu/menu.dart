@@ -9,6 +9,7 @@
 // Settings
 // About MyKPC app
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyMenu extends StatefulWidget {
@@ -19,6 +20,18 @@ class MyMenu extends StatefulWidget {
 }
 
 class _MyMenuState extends State<MyMenu> {
+  // CURRENT AUTHENTICATED USER REF
+  // current User
+  final user = FirebaseAuth.instance.currentUser!;
+
+  //  LOGOUT METHOD
+  // // signUser Out menthod
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+    debugPrint('User just signed out!!');
+    Navigator.pushReplacementNamed(context, '/'); // close the current page
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -26,11 +39,17 @@ class _MyMenuState extends State<MyMenu> {
         children: [
           // header with user profile
           UserAccountsDrawerHeader(
-            currentAccountPicture: const CircleAvatar(
-              backgroundImage: AssetImage('assets/images/SimonGREEN.jpg'),
+            currentAccountPicture: CircleAvatar(
+              // backgroundImage: AssetImage('assets/images/SimonGREEN.jpg'),
+              child: Text(user.email![0].toUpperCase(),
+                  style: const TextStyle(fontSize: 50)),
             ),
-            accountName: const Text("Caring friend"),
-            accountEmail: const Text("example@.email.com"),
+            accountName: const Text("Hii, caring friend"),
+            // pick first character of email for profile photo icon
+            // initials
+            // "${user.email.split('@')[0].toUpperCase().substring(0, 2)}",
+
+            accountEmail: Text("${user.email}"),
             otherAccountsPictures: [
               // edit profile
               IconButton(
@@ -138,7 +157,9 @@ class _MyMenuState extends State<MyMenu> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                signUserOut();
+              },
               // iconbutton style for a background color
               style: const ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll<Color>(

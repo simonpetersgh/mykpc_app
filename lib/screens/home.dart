@@ -109,21 +109,21 @@ class _HomeTabState extends State<HomeTab> {
     );
   } // featured box ends
 
-  // widget build state class
-}
-
-// Podcast Box
+  // Podcast Box
 // HAVE TO DESIGN MY OWN VIEW BOX INSTEAD OF USING THE LISTTILE
 // ignore: non_constant_identifier_names
-Widget PodcastBox() {
-  return ListTile(
-    leading: Container(
-      width: 200,
-      // height: 150,
-      color: Colors.red,
-    ),
-    title: const Text("Item title"),
-    subtitle: const Text("Subtitle text... description"),
-    trailing: const Icon(Icons.play_arrow),
-  );
+  Widget PodcastBox() {
+    return ListTile(
+      leading: Container(
+        width: MediaQuery.of(context).size.width / 2,
+        // height: 150,
+        color: Colors.red,
+      ),
+      title: const Text("Item title"),
+      subtitle: const Text("Subtitle text... description"),
+      trailing: const Icon(Icons.play_arrow),
+    );
+  }
+
+  // widget build state class
 }

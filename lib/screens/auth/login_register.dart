@@ -52,12 +52,14 @@ class _LoginOrRegisterState extends State<LoginOrRegister> {
                   children: [
                     GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacementNamed(context, '/login');
+                          Navigator.pushNamed(context, '/login');
                         },
                         child: LoginButton()),
                     GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacementNamed(context, '/register');
+                          // user to enter a given token to access register screen
+                          // when verified
+                          Navigator.pushNamed(context, '/regTokenVerification');
                         },
                         child: RegisterButton()),
                   ],

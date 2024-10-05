@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -12,8 +12,47 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   // vars
-  TextEditingController phoneNumberControlller = TextEditingController();
-  TextEditingController passwordControlller = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  // show or hide password
+  bool hidePassword = true;
+  // password match
+  bool passwordMatch = false;
+  // late bool fieldError;
+
+  // password confirmation
+  void passwordConfirmation() {
+    if (emailController.text.isEmpty) {
+      passwordNotMatchingMessage = "Enter email";
+      // fieldError = true;
+    } else if (emailController.text.isNotEmpty) {
+      // if both fields are not empty
+      if (passwordController.text != "" &&
+          confirmPasswordController.text != "") {
+        if (passwordController.text == confirmPasswordController.text) {
+          passwordMatch = true;
+          passwordNotMatchingMessage = "Passwords match. Create account.";
+
+        } else {
+          passwordMatch = false;
+          passwordNotMatchingMessage = "Passwords do not match. Resolve.";
+        }
+      } else {
+        passwordNotMatchingMessage = "Confirm password";
+      }
+    } else {
+      passwordNotMatchingMessage = "Enter email";
+    }
+    // logic test done, set states
+    setState(() {
+      passwordMatch;
+      passwordNotMatchingMessage;
+    });
+  }
+
+  // error messages
+  String passwordNotMatchingMessage = "";
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +73,26 @@ class _RegisterState extends State<Register> {
                 padding: EdgeInsets.all(20.0),
                 child: Text(
                     textAlign: TextAlign.center,
-                    "Verify your identity to register. Use student Id and phone number or Acess token.",
+                    "Register an account with your email and password to continue.",
                     style: TextStyle(fontSize: 16)),
               ),
 
               const SizedBox(height: 10),
+              // password do not match
+              Text(
+                passwordNotMatchingMessage,
+                style:
+                    TextStyle(color: passwordMatch ? Colors.green : Colors.red),
+              ),
 
               // phone number field
-              RefIdField(),
+              EmailField(),
 
               // password field
-              PhoneField(),
+              PasswordField(),
+
+              // confirm
+              ConfirmPasswordField(),
 
               const SizedBox(height: 10),
 
@@ -75,19 +123,31 @@ class _RegisterState extends State<Register> {
               ),
 
               // continue / login
-              Container(
-                // width: MediaQuery.of(context).size.width / 2,
-                padding: const EdgeInsets.all(15),
-                margin: const EdgeInsets.symmetric(horizontal: 25),
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(5)),
-                child: const Center(
-                  child: Text("Continue",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold)),
+              GestureDetector(
+                onTap: () {
+                  passwordConfirmation();
+                  // after password check,
+                  // register account if password match and email not empty
+                  if (passwordMatch) {
+                    registerUser();
+                  }
+                },
+                child: Container(
+                  // width: MediaQuery.of(context).size.width / 2,
+                  padding: const EdgeInsets.all(15),
+                  margin: const EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                      color: passwordMatch
+                          ? Colors.green
+                          : const Color.fromARGB(255, 172, 13, 2),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: const Center(
+                    child: Text("Continue",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
+                  ),
                 ),
               ),
             ],
@@ -98,13 +158,13 @@ class _RegisterState extends State<Register> {
   } // widget build
 
   // phone textfield
-  Widget RefIdField() {
+  Widget EmailField() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
       child: TextField(
-        controller: phoneNumberControlller,
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        keyboardType: TextInputType.number,
+        controller: emailController,
+        // inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        // keyboardType: TextInputType.number,
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.person_2_outlined),
           enabledBorder: const OutlineInputBorder(
@@ -113,20 +173,20 @@ class _RegisterState extends State<Register> {
               borderSide: BorderSide(color: Colors.black)),
           fillColor: Colors.grey.shade200,
           filled: true,
-          hintText: "Reference number",
-          hintStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          hintText: "Email address",
+          hintStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
       ),
     );
   }
 
   // password field
-  Widget PhoneField() {
+  Widget PasswordField() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5),
       child: TextField(
-        controller: passwordControlller,
-        obscureText: true,
+        controller: passwordController,
+        obscureText: hidePassword,
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.phone_android_outlined),
           enabledBorder: const OutlineInputBorder(
@@ -135,10 +195,140 @@ class _RegisterState extends State<Register> {
               borderSide: BorderSide(color: Colors.black)),
           fillColor: Colors.grey.shade200,
           filled: true,
-          hintText: "Phone number",
-          hintStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          hintText: "P a s s w o r d",
+          hintStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          suffixIcon: IconButton(
+            icon: hidePassword
+                ? const Icon(Icons.visibility_off)
+                : const Icon(Icons.visibility),
+            onPressed: () {
+              hidePassword = !hidePassword;
+              setState(() {
+                hidePassword;
+                // passwordConfirmation();
+              });
+            },
+          ),
         ),
       ),
     );
   } // password field ends
+
+  // confirm password
+  Widget ConfirmPasswordField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 5),
+      child: TextField(
+        controller: confirmPasswordController,
+        obscureText: hidePassword,
+        decoration: InputDecoration(
+          prefixIcon: const Icon(Icons.phone_android_outlined),
+          enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey)),
+          focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.black)),
+          fillColor: Colors.grey.shade200,
+          filled: true,
+          hintText: "Confirm Password",
+          hintStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          suffixIcon: IconButton(
+            icon: hidePassword
+                ? const Icon(Icons.visibility_off)
+                : const Icon(Icons.visibility),
+            onPressed: () {
+              hidePassword = !hidePassword;
+              setState(() {
+                hidePassword;
+                // passwordConfirmation();
+              });
+            },
+          ),
+        ),
+      ),
+    );
+  } // confirm password field ends
+
+  // ON CONTINUE CLICKED
+
+  // REGISTER USER METHOD
+  void registerUser() async {
+    // show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    // try create account with FirebaseAuth
+    try {
+      if (emailController.text.isEmpty) {
+        showErrorMessage('Email is required');
+        return;
+      } else {
+        // TO DO IF EMAIL IS NOT EMPTY
+        // check if passwords are same
+        if (passwordController.text == confirmPasswordController.text) {
+          // if creating account works
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text,
+            password: passwordController.text,
+          );
+          // stop loading circle
+          Navigator.pop(context);
+          // show Registration Confirmation
+          showRegistrationConfirmation();
+        } else {
+          // stop loading circle
+          Navigator.pop(context);
+          // show password mismatch error message
+          showErrorMessage("Password's don't match");
+        }
+      }
+      // IF NOT REGISTERED, handle the EMAIL ERROR
+    } on FirebaseAuthException catch (e) {
+      // stop loading circle and show error
+      Navigator.pop(context);
+      // show error message
+      showErrorMessage('${e.code}. Try again!');
+    }
+  } // REGISTER USER METHOD ENDS
+
+  // Error Message
+  void showErrorMessage(String errorMessage) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(errorMessage),
+        );
+      },
+    );
+  }
+
+  // Account Creation Confirmation
+  void showRegistrationConfirmation() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Center(
+            child: Column(
+              children: [
+                const Text("Account created successfully."),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/login');
+                    },
+                    child: const Text("Log in")),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  } // Account Creation Confirmation ends
+  // ASSOCIATED METHODS END
 }

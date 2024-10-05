@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mykpc_app/keystates.dart';
+// import 'package:mykpc_app/constants.dart';
 
 class RegisterWithAccessToken extends StatefulWidget {
   const RegisterWithAccessToken({super.key});
@@ -11,7 +11,43 @@ class RegisterWithAccessToken extends StatefulWidget {
 
 class _RegisterWithAccessTokenState extends State<RegisterWithAccessToken> {
   // vars
-  TextEditingController tokenControlller = TextEditingController();
+  // access token
+  String accessToken = "kpc.2024.25";
+  // token textfield controller
+  TextEditingController tokenController = TextEditingController();
+  // token verified to be used for ui logic
+  bool tokenVerified = false;
+  // button text
+  String buttonText = "Verify now";
+  Color buttonColor = Colors.black;
+  // if false, button should show verify text,
+  // if verified true, button should show continue >> to register page
+
+  // verify function
+  void verifyToken() {
+    // verify token and set verification status
+    if (tokenController.text.isEmpty) {
+      buttonText = "No token entered";
+    } else {
+      // NOT EMPTY? DO....
+      if (tokenController.text == accessToken) {
+        tokenVerified = true;
+        buttonText = "Continue";
+        buttonColor = Colors.green;
+      } else {
+        tokenVerified = false;
+        buttonText = "Incorrect token";
+        buttonColor = Colors.red;
+      }
+    }
+    // verification done
+    // set state for new values
+    setState(() {
+      tokenVerified;
+      buttonText;
+      buttonColor;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +78,7 @@ class _RegisterWithAccessTokenState extends State<RegisterWithAccessToken> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
                 child: TextField(
-                  controller: tokenControlller,
+                  controller: tokenController,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.key_outlined),
                     enabledBorder: const OutlineInputBorder(
@@ -51,14 +87,12 @@ class _RegisterWithAccessTokenState extends State<RegisterWithAccessToken> {
                         borderSide: BorderSide(color: Colors.black)),
                     fillColor: Colors.grey.shade200,
                     filled: true,
-                    hintText: "A c c e s s  T o k e n",
+                    hintText: "Enter token",
                     hintStyle: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
-
-              const SizedBox(height: 10),
 
               // not working? use token button
               Padding(
@@ -74,7 +108,7 @@ class _RegisterWithAccessTokenState extends State<RegisterWithAccessToken> {
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text(
-                          "Use Ref. Number and Phone",
+                          "Contact an executive member for assistance.",
                           style: TextStyle(
                             color: Colors.blue,
                             fontWeight: FontWeight.bold,
@@ -89,8 +123,11 @@ class _RegisterWithAccessTokenState extends State<RegisterWithAccessToken> {
               // continue / register
               GestureDetector(
                 onTap: () {
-                  if (tokenControlller.text == memberAcessToken) {
-                    Navigator.pushReplacementNamed(context, "/signup");
+                  // verifyToken();
+                  if (tokenVerified) {
+                    Navigator.pushReplacementNamed(context, "/register");
+                  } else {
+                    verifyToken();
                   }
                 },
                 child: Container(
@@ -98,11 +135,11 @@ class _RegisterWithAccessTokenState extends State<RegisterWithAccessToken> {
                   padding: const EdgeInsets.all(15),
                   margin: const EdgeInsets.symmetric(horizontal: 25),
                   decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: buttonColor,
                       borderRadius: BorderRadius.circular(5)),
-                  child: const Center(
-                    child: Text("Continue",
-                        style: TextStyle(
+                  child: Center(
+                    child: Text(buttonText,
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold)),

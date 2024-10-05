@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:mykpc_app/firebase_options.dart';
 import 'package:mykpc_app/screens/auth/reg_with_access-token.dart';
-import 'package:mykpc_app/screens/auth/signup.dart';
 import 'screens/activity/activity.dart';
+import 'screens/auth/auth_logic.dart';
 import 'screens/auth/login.dart';
 import 'screens/auth/login_register.dart';
 import 'screens/auth/register.dart';
@@ -13,7 +15,13 @@ import 'screens/main_page.dart';
 import 'screens/notifications.dart';
 import 'screens/podcasts.dart';
 
-void main() {
+void main() async {
+  // initialize firebase
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  // runApp
   runApp(const MyApp());
 }
 
@@ -30,14 +38,15 @@ class MyApp extends StatelessWidget {
               seedColor: const Color.fromARGB(255, 243, 3, 3)),
           useMaterial3: true,
         ),
-        // home: const HomePage(),
+        // home: const AuthLogic(),
         debugShowCheckedModeBanner: false,
         // app routes
         routes: {
-          "/": (ctx) => const LoginOrRegister(),
-          "/login-reg": (ctx) => const LoginOrRegister(),
-          "/login": (ctx) => const Login(),
+          "/": (ctx) => const AuthLogic(),
+          "/loginRegister": (ctx) => const LoginOrRegister(),
+          '/regTokenVerification': (context) => const RegisterWithAccessToken(),
           "/register": (ctx) => const Register(),
+          "/login": (ctx) => const Login(),
           "/home": (ctx) => const HomePage(),
           "/commChat": (context) => const CommChat(),
           "/activity": (ctx) => const ActivityTab(),
@@ -46,8 +55,6 @@ class MyApp extends StatelessWidget {
           "/podcasts": (ctx) => const PodcastsTab(),
           '/ec-center': (context) => const ElectionsLogin(),
           '/vote': (context) => const VotingPortal(),
-          '/reg-token': (context) => const RegisterWithAccessToken(),
-          '/signup': (context) => const RegisterNow(),
         });
   }
 }

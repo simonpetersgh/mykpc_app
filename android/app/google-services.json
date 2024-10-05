@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "314737802800",
+    "project_id": "mykpcapp",
+    "storage_bucket": "mykpcapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314737802800:android:9c0e1745225a3ba1ffb7f5",
+        "android_client_info": {
+          "package_name": "com.example.mykpc_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0fqApaMIPS-iMZR3Nge6JVTLentikDO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -29,10 +29,13 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.6
+  firebase_auth: ^5.3.1
+  firebase_core: ^3.6.0
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.4.1
   google_nav_bar: ^5.0.6
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_chat_ui: ^1.6.12
