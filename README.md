@@ -1,10 +1,13 @@
 # MyKPC APP
 
-A Flutter App developed by Simon Peters for KNUST Peer Counsellors.
+A Cross-platdorm app developed for KNUST Peer Counsellors.
 
 ## Getting started with the Beta version
 
 This project is a starting point for a Flutter application.
+
+## For Collaborators
+ 
 
 A few resources to get you started if this is your first Flutter project:
 
