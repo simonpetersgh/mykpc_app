@@ -10,6 +10,11 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+  // Greetings
+  String morningGreeting = "Good morning! How are you doing today?";
+  String afternoonGreeting = "Good day, friend! How is your day going?";
+  String eveningGreeting = "Evening is here! How are you feeling?";
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -19,12 +24,47 @@ class _HomeTabState extends State<HomeTab> {
           // Container: Welcome text with image
           // Welcome back, / Good morning'afternoon'evening
           // caring friend
-          const Text(
-            "Welcome, caring friend",
-            style: TextStyle(
-              fontSize: 30.0,
-              fontWeight: FontWeight.w500,
+
+          // banner
+          Container(
+            height: MediaQuery.sizeOf(context).height / 3,
+            width: double.infinity,
+            // color: Colors.red.shade400,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/kpc-23-home.jpg"),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
             ),
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    morningGreeting,
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+              // anonymous chat space button button
+              // ANONYMOUS SPACE
+              IconButton(
+                hoverColor: Colors.grey,
+                onPressed: () {
+                  Navigator.pushNamed(context, '/anonymousSpace');
+                },
+                icon: const Icon(Icons.telegram_outlined),
+              ),
+            ],
           ),
           // Add Banner Asset Image
           SizedBox(
@@ -48,7 +88,7 @@ class _HomeTabState extends State<HomeTab> {
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "Podcasts For You",
+                  "For You",
                   style: TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.w500,
@@ -64,6 +104,7 @@ class _HomeTabState extends State<HomeTab> {
             ],
           ),
 
+          forYouBox(),
           PodcastBox(),
           PodcastBox(),
           PodcastBox(),
@@ -122,6 +163,69 @@ class _HomeTabState extends State<HomeTab> {
       title: const Text("Item title"),
       subtitle: const Text("Subtitle text... description"),
       trailing: const Icon(Icons.play_arrow),
+    );
+  }
+
+  Widget forYouBox() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        height: 150,
+        width: double.infinity,
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // image box
+              Container(
+                  height: 140,
+                  width: 150,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/kpc-23-home.jpg"),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  ),
+                  child: IconButton(
+                    onPressed: () {},
+                    hoverColor: Colors.grey,
+                    icon: const Icon(Icons.play_arrow_outlined,
+                        size: 50, color: Colors.white),
+                  )
+
+                  // border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
+                  ),
+
+              // description
+              const Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text("Title of Item"),
+                      Expanded(child: Text("Brief description of content...")),
+                      // Spacer(),
+                      Row(
+                        children: [
+                          Icon(Icons.alarm),
+                          Icon(Icons.date_range_outlined),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+
+              // trailing icon button
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.more_vert_outlined),
+              )
+            ]),
+      ),
     );
   }
 

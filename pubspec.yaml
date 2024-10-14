@@ -38,6 +38,7 @@ dependencies:
   flutter_native_splash: ^2.4.1
   google_nav_bar: ^5.0.6
   google_sign_in: ^6.2.1
+  syncfusion_flutter_pdfviewer: ^27.1.51
 
 dev_dependencies:
   flutter_chat_ui: ^1.6.12
@@ -50,7 +51,11 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
-
+  flutter_launcher_icons: ^0.14.1
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon-512.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
@@ -64,6 +69,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -22,7 +22,7 @@ class _CommChatTab0State extends State<CommChatTab0> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("Community Chat"),
+          title: const Text("Anonymous Space"),
         ),
         body: Chat(
             messages: _messages,

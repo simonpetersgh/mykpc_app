@@ -12,6 +12,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../general/calender.dart';
+import '../general/kpc_constitution.dart';
+
 class MyMenu extends StatefulWidget {
   const MyMenu({super.key});
 
@@ -104,14 +107,27 @@ class _MyMenuState extends State<MyMenu> {
           ListTile(
             leading: const Icon(Icons.book),
             title: const Text('Constitution'),
-            onTap: () {},
+            onTap: () {
+              // close menu view
+              // Navigator.pop(context);
+              // and show kpc constitution viewer screen
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ConstitutionViewer()));
+            },
           ),
 
           // KPC calendar menu item
           ListTile(
             leading: const Icon(Icons.calendar_today),
             title: const Text('KPC Calendar'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CalendarViewer()));
+            },
           ),
 
           // executive & rep menu item

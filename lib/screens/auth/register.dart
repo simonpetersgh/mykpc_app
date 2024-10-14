@@ -98,30 +98,30 @@ class _RegisterState extends State<Register> {
               const SizedBox(height: 10),
 
               // not working? use token button
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Not working?"),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/reg-token');
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "Use Access Token",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       const Text("Not working?"),
+              //       GestureDetector(
+              //         onTap: () {
+              //           Navigator.pushNamed(context, '/reg-token');
+              //         },
+              //         child: const Padding(
+              //           padding: EdgeInsets.all(8.0),
+              //           child: Text(
+              //             "Use Access Token",
+              //             style: TextStyle(
+              //               color: Colors.blue,
+              //               fontWeight: FontWeight.bold,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
 
               // continue / login
               GestureDetector(

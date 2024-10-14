@@ -74,8 +74,10 @@ class _LoginState extends State<Login> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text('OK',
-                  style: TextStyle(fontWeight: FontWeight.bold),),
+              child: const Text(
+                'OK',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             )
           ],
         );
@@ -98,8 +100,11 @@ class _LoginState extends State<Login> {
 
             const SizedBox(height: 20),
 
-            const Text("Enter account credentials to login to MyKPC app.",
-                style: TextStyle(fontSize: 16)),
+            const Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Text("Enter account credentials to login to MyKPC app.",
+                  textAlign: TextAlign.center, style: TextStyle(fontSize: 16)),
+            ),
 
             const SizedBox(height: 10),
 

@@ -7,6 +7,7 @@ import 'screens/auth/auth_logic.dart';
 import 'screens/auth/login.dart';
 import 'screens/auth/login_register.dart';
 import 'screens/auth/register.dart';
+import 'screens/chat/anonymous_chat.dart';
 import 'screens/chat/comm_chat.dart';
 import 'screens/elections/elections.dart';
 import 'screens/elections/vote.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 243, 3, 3)),
         useMaterial3: true,
       ),
-      // home: const AuthLogic(),
+      // home: const HomePage(),
       debugShowCheckedModeBanner: false,
       // app routes
       routes: {
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         "/login": (ctx) => const Login(),
         "/home": (ctx) => const HomePage(),
         "/commChat": (context) => const CommChat(),
+        "/anonymousSpace": (ctx) => const AnonymousChat(),
         "/activity": (ctx) => const ActivityTab(),
         "/notifications": (context) => const Notifications(),
         "/chat0": (context) => const CommChatTab0(),

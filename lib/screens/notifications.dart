@@ -31,7 +31,10 @@ class _NotificationsState extends State<Notifications> {
             },
             hoverColor: Colors.grey,
             icon: notificationsOn
-                ? const Icon(Icons.toggle_on, color: Colors.green,)
+                ? const Icon(
+                    Icons.toggle_on,
+                    color: Colors.green,
+                  )
                 : const Icon(Icons.toggle_off_outlined),
           )
         ],

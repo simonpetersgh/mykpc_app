@@ -43,18 +43,14 @@ class _HomePageState extends State<HomePage> {
 
       // my app bar
       appBar: AppBar(
+        elevation: 0,
         title: const Text('Caring friends'),
         // centerTitle: true,
         actions: [
           // add post
           IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
-          // chat
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/chat0');
-            },
-            icon: const Icon(Icons.telegram_outlined),
-          ),
+          // anonymous chat button removed
+          // SENT TO HOME PAGE GREETING'S ROW
           // notifications iButton
           GestureDetector(
             onTap: () {
@@ -106,8 +102,8 @@ class _HomePageState extends State<HomePage> {
             label: "Activity",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.telegram_outlined),
-            label: "Chat",
+            icon: Icon(Icons.mail_outlined),
+            label: "Inbox",
           ),
         ],
       ),

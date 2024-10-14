@@ -110,11 +110,13 @@ class _RegisterWithAccessTokenState extends State<RegisterWithAccessToken> {
                       },
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "Contact an executive member for assistance.",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
+                        child: Expanded(
+                          child: Text(
+                            "Contact an executive member for assistance.",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
