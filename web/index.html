@@ -35,7 +35,11 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = null; // commented out, not initially
+    // const serviceWorkerVersion = null; // OLD , COMMENTED OUT
+
+    const serviceWorkerVersion = '{{flutter_service_worker_version}}'; // new
+    // see Stack Overflow for issue
+    // at (https://stackoverflow.com/questions/78152396/how-do-i-replace-serviceworkerversion-with-flutter-service-worker-version)
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer=""></script>

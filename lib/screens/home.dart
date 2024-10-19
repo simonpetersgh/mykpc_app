@@ -15,12 +15,34 @@ class _HomeTabState extends State<HomeTab> {
   String afternoonGreeting = "Good day, friend! How is your day going?";
   String eveningGreeting = "Evening is here! How are you feeling?";
 
+  // time
+  DateTime time = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
+    // THE HOME SCREEN SHALL CONTAIN A HIGLIGHT OF SOME RELEVANT FEATURES
+    // HIGHLISTS OF SOME IMPORTANT UPDATES
+    // IT SHALL INCLUDE,
+    // #FEATURED POSTS/ACTIVITIES
+    // #ANONYMOUS CHAT BUTTON
+    // CUSTOM GREETINGS BY TIME OF DAY
+    // QUOTES OF THE WEEEK #Today's Quote
+    // TO BE REORDERS HOW NECESSARY
     return SingleChildScrollView(
       child: Column(
+        // OUTLINE FOR THE HOME PAGE COLUMN ITEMS
+        // greetings
+        // today's quote
+        // featured posts
+        // others
+        // anonymous
+        // suggestions
+        // quick contacts #executives #counsellor
+        // follow us on social media
+
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // #ITEM 1
           // Container: Welcome text with image
           // Welcome back, / Good morning'afternoon'evening
           // caring friend
@@ -41,6 +63,7 @@ class _HomeTabState extends State<HomeTab> {
               ),
             ),
           ),
+          // ITEM #2
           Row(
             children: [
               Expanded(
@@ -66,6 +89,7 @@ class _HomeTabState extends State<HomeTab> {
               ),
             ],
           ),
+          // ITEM #3
           // Add Banner Asset Image
           SizedBox(
             height: 250,
@@ -81,6 +105,8 @@ class _HomeTabState extends State<HomeTab> {
           ),
 
           const SizedBox(height: 10.0),
+
+          // ITEM #4
 
           // Upcoming Programs
           Row(
@@ -104,19 +130,32 @@ class _HomeTabState extends State<HomeTab> {
             ],
           ),
 
+          // ITEM #5
           forYouBox(),
           PodcastBox(),
           PodcastBox(),
           PodcastBox(),
           PodcastBox(),
           PodcastBox(),
+
+          // ITEM #6
+          // ITEM #7
+          // ITEM #8
         ],
       ),
     );
   } // Widget build method ends
 
-  // featured box
+  // ................................... //
+  // RELEVANT WIDGETS AND FUNCTIONS HERE //
+  // ................................... //
 
+  // featured box
+  // THIS IS THE BOX FOR THE SLIDESHOW OF SOME FEATURED ITEMS/ACTIVITY POSTS
+  // IT TAKES AN IMAGE/FLYER AND POST URL, (AND MAYBE A BRIEF CAPTION AS IN THE POST)
+  // THE FEATURED ITEMS SHALL BE SET OR REMOVED BY AND AN EDITOR/ADMIN
+  // THIS SHALL BE DONE FOR MAINLY UPCOMING PROGRAMS OR EVENTS AND REMOVED IF EVENT IS PAST
+  // THE onTap FUNCTION SHALL TAKE YOU TO THE PARTICULAR ACTIVITY POST (IN THE #ACTIVITY TAB)
   Widget candidateBox(String imageUrl, String postUrl) {
     return GestureDetector(
       onTap: () {},
@@ -228,6 +267,6 @@ class _HomeTabState extends State<HomeTab> {
       ),
     );
   }
-
-  // widget build state class
+// INSIDE BUILD CLASS
 }
+// widget build state class END
