@@ -2,6 +2,10 @@
 
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+import 'activity/activity.dart';
+import 'chat/chats.dart';
+
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
 
@@ -18,6 +22,24 @@ class _HomeTabState extends State<HomeTab> {
   // time
   DateTime time = DateTime.now();
 
+  // // tab values
+  // int currentTabIndex = 0;
+  // // Tabs Array
+  // final myTabs = [
+  //   const HomeTab(),
+  //   const ActivityTab(),
+  //   const ChatTab(),
+  //   // const PodcastsTab(),
+  // ];
+
+  @override
+  void initState() {
+    // Implementing initState
+    notificationsOn;
+    // currentTabIndex;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // THE HOME SCREEN SHALL CONTAIN A HIGLIGHT OF SOME RELEVANT FEATURES
@@ -30,6 +52,7 @@ class _HomeTabState extends State<HomeTab> {
     // TO BE REORDERS HOW NECESSARY
     return SingleChildScrollView(
       child: Column(
+        // app bar
         // OUTLINE FOR THE HOME PAGE COLUMN ITEMS
         // greetings
         // today's quote
@@ -42,6 +65,26 @@ class _HomeTabState extends State<HomeTab> {
 
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // app bar
+          Row(children: [
+            const Text('Caring friends'),
+            // add post
+            IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
+            // anonymous chat button removed
+            // SENT TO HOME PAGE GREETING'S ROW
+            // notifications iButton
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/notifications');
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: notificationsOn
+                    ? const Icon(Icons.notifications_active_outlined)
+                    : const Icon(Icons.notifications_off_outlined),
+              ),
+            )
+          ]),
           // #ITEM 1
           // Container: Welcome text with image
           // Welcome back, / Good morning'afternoon'evening
