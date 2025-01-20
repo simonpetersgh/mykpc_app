@@ -21,7 +21,8 @@
         "statusBarItem.remoteForeground": "#e7e7e7"
     },
     "peacock.color": "#215732",
-    // custom settings for refactoring on save
+    // vscode custom settings for refactoring on save
+    // it adds and removes const to dart code where needed
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit"

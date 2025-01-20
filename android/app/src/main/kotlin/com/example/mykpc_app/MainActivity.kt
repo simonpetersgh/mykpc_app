@@ -1,4 +1,4 @@
-package com.example.mykpc_app
+package com.spssolutions.mykpc
 
 import io.flutter.embedding.android.FlutterActivity
 

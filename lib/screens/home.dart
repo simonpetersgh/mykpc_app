@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import 'activity/activity.dart';
-import 'chat/chats.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
